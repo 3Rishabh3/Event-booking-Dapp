@@ -8,7 +8,6 @@ import Pastevent from "./components/pastevent/Pastevent";
 import Swap from "./components/swap/Swap";
 import Upcomingevent from "./components/upcomingevent/Upcomingevent";
 import Userticket from "./components/userticket/Userticket";
-import Alert from "@material-ui/lab/Alert";
 import ConnectToMetmask from "./MetamaskConnect";
 import { useState } from "react";
 

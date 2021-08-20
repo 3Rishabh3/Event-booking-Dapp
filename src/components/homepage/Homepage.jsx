@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import homebg1 from "../../Utils/homebg1.jpg";
 import { Link } from "react-router-dom";
 // icons
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
@@ -113,7 +112,6 @@ export default function Home() {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    background: "url(" + homebg1 + ")",
     backgroundPosition: "center",
     padding: "24px",
     borderRadius: "5px"
