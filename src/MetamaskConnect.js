@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 
 //Loader
-import Loader from "./Utils/loader.gif";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 //Toast container
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
 
@@ -15,7 +13,6 @@ import Web3 from "web3";
 const ConnectToMetmask = ({ setCurrentAccountToHome }) => {
   const [currentAccount, setCurrentAccount] = useState(null);
   const [networkId, setNetWorkId] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     loadWeb3();

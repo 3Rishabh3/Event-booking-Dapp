@@ -9,13 +9,12 @@ import Swap from "./components/swap/Swap";
 import Upcomingevent from "./components/upcomingevent/Upcomingevent";
 import Userticket from "./components/userticket/Userticket";
 import Alert from "@material-ui/lab/Alert";
-
 import ConnectToMetmask from "./MetamaskConnect";
 import { useState } from "react";
 
 export default function App() {
   let location = useLocation();
-  let [currentaccount, setCurrentAccountToHome] = useState(null);
+  let [currentaccount, setCurrentAccountToHome] = useState(undefined);
   console.log(currentaccount);
 
   return (
@@ -24,7 +23,7 @@ export default function App() {
       {currentaccount === undefined ? (
         <CircularProgress />
       ) : (
-        <Alert severity="info">Current Address : {currentaccount}</Alert>
+        <h3>Current Address : {currentaccount}</h3>
       )}
 
       <Switch location={location} key={location.key}>
