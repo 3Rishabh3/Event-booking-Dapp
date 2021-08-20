@@ -1,81 +1,34 @@
-import { useEffect, useState } from "react";
+import Homepage from "./components/homepage/Homepage";
+import { Route, Switch, useLocation } from "react-router-dom";
 
-//Loader
-import Loader from "./Utils/loader.gif";
+// all pages imported
+import Createevent from "./components/createevent/Createevent";
+import Dashboard from "./components/dashboard/Dashboard";
+import Pastevent from "./components/pastevent/Pastevent";
+import Swap from "./components/swap/Swap";
+import Upcomingevent from "./components/upcomingevent/Upcomingevent";
+import Userticket from "./components/userticket/Userticket";
+import ConnectToMetmask from "./MetamaskConnect";
+import { useState } from "react";
 
-//Toast container
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
-import { toast } from "react-toastify";
+export default function App() {
+  let location = useLocation();
+  let [currentaccount, setCurrentAccountToHome] = useState(null);
+  console.log(currentaccount);
 
-//Web3 library
-import Web3 from "web3";
-
-//Components
-import NavBar from "./Components/NavBar";
-
-const App = () => {
-  const [currentAccount, setCurrentAccount] = useState("");
-  const [networkId, setNetWorkId] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    loadWeb3();
-    loadBlockchainData();
-  }, []);
-
-  const loadWeb3 = async () => {
-    if (window.ethereum) {
-      await window.ethereum.enable();
-    } else {
-      toast("Please Connect To A Wallet. Try Using Metamask.", {
-        type: "error",
-        autoClose: 15000
-      });
-    }
-  };
-
-  const loadBlockchainData = async () => {
-    if (typeof window.ethereum == "undefined") {
-      return;
-    }
-    const web3 = new Web3(window.ethereum);
-
-    const accounts = await web3.eth.getAccounts();
-    setCurrentAccount(accounts[0]);
-
-    const networkId = await web3.eth.net.getId();
-    setNetWorkId(networkId);
-
-    if (networkId !== 4) {
-      toast("Use Rinkeby Test network", { type: "error", autoClose: 15000 });
-      return;
-    }
-  };
-
-  if (networkId !== 4)
-    return (
-      <h1 className="text-center mt-5">Please connect to Rinkeby Testnet...</h1>
-    );
-
-  return isLoading ? (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh"
-      }}
-    >
-      <img src={Loader} alt="Loading..."></img>
-    </div>
-  ) : (
-    <div>
-      <NavBar address={currentAccount} />
-      <ToastContainer />
-      <h1>Book Your Show</h1>
-    </div>
+  return (
+    <>
+      <ConnectToMetmask setCurrentAccountToHome={setCurrentAccountToHome} />
+      <kbd>{currentaccount}</kbd>
+      <Switch location={location} key={location.key}>
+        <Route path="/" exact component={Homepage} />
+        <Route path="/upcomingevent" exact component={Upcomingevent} />
+        <Route path="/pastevent" exact component={Pastevent} />
+        <Route path="/createevent" exact component={Createevent} />
+        <Route path="/dashboard" exact component={Dashboard} />
+        <Route path="/swap" exact component={Swap} />
+        <Route path="/userticket" exact component={Userticket} />
+      </Switch>
+    </>
   );
-};
-
-export default App;
+}

@@ -22,13 +22,11 @@ export default function Home() {
         <i>
           <AccountCircleIcon color="blue" fontSize={"large"} />
         </i>{" "}
-        PhoenixDAO Events Marketplace
+        Ticky Ticket
       </h1>
       <h1 class={classes.subHeading}>What are you going to do?</h1>
       <div class={classes.root}>
-        <h1 class={classes.subHeading}>
-          Welcome to PhoenixDAO Events Marketplace
-        </h1>
+        <h1 class={classes.subHeading}>Welcome to Ticky Ticket</h1>
         <p class={classes.ptag}>
           The PhoenixDAO Events Marketplace is a dApp that allows people to
           create events and sell tickets online, with the option to make an
