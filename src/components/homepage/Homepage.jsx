@@ -4,14 +4,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import homebg1 from "../../Utils/homebg1.jpg";
 import { Link } from "react-router-dom";
 // icons
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import EventIcon from "@material-ui/icons/Event";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import SwapHorizIcon from "@material-ui/icons/SwapHoriz";
 import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber";
-
+import EnhancedEncryptionIcon from "@material-ui/icons/EnhancedEncryption";
 export default function Home() {
   const classes = useStyles();
   window.document.title = "homepage";
@@ -20,7 +19,7 @@ export default function Home() {
       <h1 class={classes.heading}>
         {" "}
         <i>
-          <AccountCircleIcon color="blue" fontSize={"large"} />
+          <EnhancedEncryptionIcon color="blue" fontSize={"large"} />
         </i>{" "}
         Ticky Ticket
       </h1>

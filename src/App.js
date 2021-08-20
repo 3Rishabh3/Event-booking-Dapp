@@ -1,13 +1,15 @@
-import Homepage from "./components/homepage/Homepage";
 import { Route, Switch, useLocation } from "react-router-dom";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 // all pages imported
+import Homepage from "./components/homepage/Homepage";
 import Createevent from "./components/createevent/Createevent";
 import Dashboard from "./components/dashboard/Dashboard";
 import Pastevent from "./components/pastevent/Pastevent";
 import Swap from "./components/swap/Swap";
 import Upcomingevent from "./components/upcomingevent/Upcomingevent";
 import Userticket from "./components/userticket/Userticket";
+import Alert from "@material-ui/lab/Alert";
+
 import ConnectToMetmask from "./MetamaskConnect";
 import { useState } from "react";
 
@@ -19,7 +21,12 @@ export default function App() {
   return (
     <>
       <ConnectToMetmask setCurrentAccountToHome={setCurrentAccountToHome} />
-      <kbd>{currentaccount}</kbd>
+      {currentaccount === undefined ? (
+        <CircularProgress />
+      ) : (
+        <Alert severity="info">Current Address : {currentaccount}</Alert>
+      )}
+
       <Switch location={location} key={location.key}>
         <Route path="/" exact component={Homepage} />
         <Route path="/upcomingevent" exact component={Upcomingevent} />

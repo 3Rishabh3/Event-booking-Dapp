@@ -13,18 +13,18 @@ import { toast } from "react-toastify";
 import Web3 from "web3";
 
 const ConnectToMetmask = ({ setCurrentAccountToHome }) => {
-  const [currentAccount, setCurrentAccount] = useState("");
+  const [currentAccount, setCurrentAccount] = useState(null);
   const [networkId, setNetWorkId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     loadWeb3();
-    loadBlockchainData();
   }, []);
 
   const loadWeb3 = async () => {
     if (window.ethereum) {
       await window.ethereum.enable();
+      loadBlockchainData();
     } else {
       toast("Please Connect To A Wallet. Try Using Metamask.", {
         type: "error",
@@ -37,6 +37,7 @@ const ConnectToMetmask = ({ setCurrentAccountToHome }) => {
     if (typeof window.ethereum === "undefined") {
       return;
     }
+
     const web3 = new Web3(window.ethereum);
 
     const accounts = await web3.eth.getAccounts();
@@ -55,8 +56,7 @@ const ConnectToMetmask = ({ setCurrentAccountToHome }) => {
     return (
       <h1 className="text-center mt-5">Please connect to Rinkeby Testnet...</h1>
     );
-
-  return isLoading ? (
+  return currentAccount === null ? (
     <CircularProgress />
   ) : (
     <>{setCurrentAccountToHome(currentAccount)}</>
