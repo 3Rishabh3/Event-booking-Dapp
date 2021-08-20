@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import "./App.css";
-
 //Loader
 import Loader from "./Utils/loader.gif";
 
@@ -32,7 +30,7 @@ const App = () => {
     } else {
       toast("Please Connect To A Wallet. Try Using Metamask.", {
         type: "error",
-        autoClose: 15000,
+        autoClose: 15000
       });
     }
   };
@@ -66,7 +64,7 @@ const App = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        height: "100vh"
       }}
     >
       <img src={Loader} alt="Loading..."></img>
