@@ -16,7 +16,7 @@ export default function Swap() {
             <Button
               className="modalbtn"
               endIcon={<ExpandMoreIcon fontSize="large" />}
-              variant="contained"
+              variant="outlined"
               color="primary"
             >
               ETH
@@ -36,7 +36,7 @@ export default function Swap() {
             TO
             <Button
               className="modalbtn"
-              variant="contained"
+              variant="outlined"
               color="secondary"
               style={{ color: "white", background: "black" }}
               disabled
@@ -53,6 +53,13 @@ export default function Swap() {
             type="text"
           />
         </div>
+        <Button
+          style={{ marginTop: "10px", width: "100%", fontSize: "1.4rem" }}
+          variant="contained"
+          color="secondary"
+        >
+          SWAP
+        </Button>
       </div>
     </div>
   );
