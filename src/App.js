@@ -22,7 +22,17 @@ export default function App() {
       {currentaccount === undefined ? (
         <CircularProgress />
       ) : (
-        <h3>Current Address : {currentaccount}</h3>
+        <h3
+          style={{
+            margin: "0",
+            padding: "8px 4px",
+            background: "white",
+            boxShadow: "0px 2px 5px #0007",
+            textAlign: "center"
+          }}
+        >
+          Current Address : {currentaccount}
+        </h3>
       )}
 
       <Switch location={location} key={location.key}>
