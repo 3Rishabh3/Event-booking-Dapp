@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity ^0.7.0;
 
 contract EventRegistration{
     
-    struct Registrant{
+    struct Registrant {
         uint amount;
         uint numTickets;
     }
@@ -66,7 +66,7 @@ contract EventRegistration{
             emit Refund(msg.sender, registrantsPaid[msg.sender].amount);
         }
     }
-    
+     
     function withdrawFunds() public onlyOwner{
         require(owner.send(address(this).balance), "An error occured");
             
